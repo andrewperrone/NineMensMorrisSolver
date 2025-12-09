@@ -1,4 +1,4 @@
-package AI1.NineMensMorrisSolver; // I absolutely hate the package declarations
+// package AI1.NineMensMorrisSolver; // I absolutely hate the package declarations
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

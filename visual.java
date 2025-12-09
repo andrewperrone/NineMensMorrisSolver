@@ -38,36 +38,19 @@ public class visual extends JFrame implements ActionListener {
 
     JLabel[][] boardLaels = new JLabel[7][7];
     /*
-        0,0
-                    3,0
-                                6,0
+        0,0            3,0            6,0
 
-            1,1
-                    3,1
-                            5,1
+            1,1        3,1        5,1
 
-                2,2
-                    3,2
-                        4,2
+                2,2    3,2    4,2
 
-        0,3
-            1,3
-                2,3
-                        4,3
-                            5,3
-                                6,3
+        0,3 1,3 2,3           4,3 5,3 6,3
 
-                2,4
-                    3,4
-                        4,4
+                2,4    3,4    4,4
 
-            1,5
-                    3,5
-                            5,5
+            1,5        3,5        5,5
 
-        0,6
-                    3,6
-                            6,6
+        0,6            3,6            6,6
     */
     int[][][] relationship = new int[3][8][2];
     /*

@@ -39,35 +39,39 @@ public class visual extends JFrame implements ActionListener {
     JLabel[][] boardLaels = new JLabel[7][7];
     /*
         0,0
-        3,0
-        6,0
+                    3,0
+                                6,0
 
-        1,1
-        3,1
-        5,1
+            1,1
+                    3,1
+                            5,1
 
-        2,2
-        3,2
-        4,2
+                2,2
+                    3,2
+                        4,2
 
-        1,3
-        2,3
-        3,3
-        5,3
-        6,3
-        7,3
+        0,3
+            1,3
+                2,3
+                        4,3
+                            5,3
+                                6,3
 
-        2,4
-        3,4
-        4,4
+                2,4
+                    3,4
+                        4,4
 
-        1,5
-        3,5
-        5,5
+            1,5
+                    3,5
+                            5,5
 
         0,6
-        3,6
-        6,6
+                    3,6
+                            6,6
+    */
+    int[][][] relationship = new int[3][8][2];
+    /*
+
     */
 
     public visual() {
@@ -78,6 +82,9 @@ public class visual extends JFrame implements ActionListener {
         // Row, Col, HorGap, VerGap
         setLayout(new GridLayout(8,7,15,15));
 
+        int number = 0;
+        int ring = 0;
+        int add =1;
         for (int i=0; i<boardLaels[0].length; i++) { // x axis
             for (int j=0; j<boardLaels.length; j++) { // y axis
                 // boardLabels[j][i]
@@ -85,22 +92,65 @@ public class visual extends JFrame implements ActionListener {
                 if (j%6==0) {
                     if (i%3==0) {
                         boardLaels[j][i] = new JLabel(".");
+                        relationship[ring][number] = new int[] {j, i};
                     }
                 }
                 else if (j%4==1) {
                     if (i%2==1) {
                         boardLaels[j][i] = new JLabel(".");
+                        relationship[ring][number] = new int[] {j, i};
                     }
                 }
                 else if (j!=3) {
                     if (i==2 || i==3 || i==4) {
                         boardLaels[j][i] = new JLabel(".");
+                        relationship[ring][number] = new int[] {j, i};
                     }
                 }
-                else {
-                    if (i!=3) {
-                        boardLaels[j][i] = new JLabel(".");
+                else if (i!=3) {
+                    boardLaels[j][i] = new JLabel(".");
+                    relationship[ring][number] = new int[] {j, i};
+                }
+                
+                if (boardLaels[j][i]!=null) {
+                    System.out.print("["+ring+", "+number+"] -> ");
+                    if (i<3) {
+                        number+=3;
+                        if (number==6) {
+                            number--;
+                        }
+                        else if (number==8) {
+                            number=0;
+                            ring++;
+                        }
+                        if (ring==3) {
+                            ring=0;
+                            number=1;
+                        }
                     }
+                    else if (i==3) {
+                        ring+=add;
+                        if (number==6 && ring==-1) {
+                            ring = 2;
+                            number = 2;
+                        }
+                        else if (ring==3) {
+                            add =-1;
+                            number=6;
+                            ring--;
+                        }
+                    }
+                    else {
+                        number+=2;
+                        if (number==6) {
+                            number++;
+                        }
+                        else if (number==9) {
+                            number =2;
+                            ring--;
+                        }
+                    }
+                    System.out.println("["+ring+", "+number+"]");
                 }
 
                 if (boardLaels[j][i]==null) {

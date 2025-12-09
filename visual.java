@@ -32,11 +32,26 @@ public class visual extends JFrame implements ActionListener {
 
         moving rings keeps the 2nd dimension the same
     */
+    int[][] moves = new int[][] {
+        {1, 3, 0},
+        {-1, 1, 1},
+        {-1, 2, 0},
+        {-3, 2, 1},
+        {-2, 3, 1},
+        {-2, 1, 0},
+        {-1, 1, 1},
+        {-3, -1, 0}
+    };
     public static final int EMPTY = 0;
     public static final int WHITE = 1;
     public static final int BLACK = 2;
+    public static final String WHITEPIECE = "O";
+    public static final String BLACKPIECE = "*";
+    public static boolean placingPhase = true;
+    public static boolean normalPhase = false;
+    public static boolean[] flying = new boolean[] {false, false}; // [White, Black]
 
-    JLabel[][] boardLaels = new JLabel[7][7];
+    JButton[][] boardLabels = new JButton[7][7];
     /*
         0,0            3,0            6,0
 
@@ -53,9 +68,6 @@ public class visual extends JFrame implements ActionListener {
         0,6            3,6            6,6
     */
     int[][][] relationship = new int[3][8][2];
-    /*
-
-    */
 
     public visual() {
         super("minmax 9 men's morris");
@@ -68,35 +80,39 @@ public class visual extends JFrame implements ActionListener {
         int number = 0;
         int ring = 0;
         int add =1;
-        for (int i=0; i<boardLaels[0].length; i++) { // x axis
-            for (int j=0; j<boardLaels.length; j++) { // y axis
+        for (int i=0; i<boardLabels[0].length; i++) { // x axis
+            for (int j=0; j<boardLabels.length; j++) { // y axis
                 // boardLabels[j][i]
                 // 0-6, 1-5, 2-4, 3
                 if (j%6==0) {
                     if (i%3==0) {
-                        boardLaels[j][i] = new JLabel(".");
+                        boardLabels[j][i] = new JButton(".");
                         relationship[ring][number] = new int[] {j, i};
+                        boardLabels[j][i].addActionListener(this);
                     }
                 }
                 else if (j%4==1) {
                     if (i%2==1) {
-                        boardLaels[j][i] = new JLabel(".");
+                        boardLabels[j][i] = new JButton(".");
                         relationship[ring][number] = new int[] {j, i};
+                        boardLabels[j][i].addActionListener(this);
                     }
                 }
                 else if (j!=3) {
                     if (i==2 || i==3 || i==4) {
-                        boardLaels[j][i] = new JLabel(".");
+                        boardLabels[j][i] = new JButton(".");
                         relationship[ring][number] = new int[] {j, i};
+                        boardLabels[j][i].addActionListener(this);
                     }
                 }
                 else if (i!=3) {
-                    boardLaels[j][i] = new JLabel(".");
+                    boardLabels[j][i] = new JButton(".");
                     relationship[ring][number] = new int[] {j, i};
+                    boardLabels[j][i].addActionListener(this);
                 }
                 
-                if (boardLaels[j][i]!=null) {
-                    System.out.print("["+ring+", "+number+"] -> ");
+                if (boardLabels[j][i]!=null) {
+                    // System.out.print("["+ring+", "+number+"] -> ");
                     if (i<3) {
                         number+=3;
                         if (number==6) {
@@ -133,18 +149,58 @@ public class visual extends JFrame implements ActionListener {
                             ring--;
                         }
                     }
-                    System.out.println("["+ring+", "+number+"]");
+                    // System.out.println("["+ring+", "+number+"]");
                 }
 
-                if (boardLaels[j][i]==null) {
-                    boardLaels[j][i] = new JLabel("");
+                if (boardLabels[j][i]==null) {
+                    boardLabels[j][i] = new JButton("");
                 }
-                boardLaels[j][i].setFont(new Font("Ariel", Font.BOLD, 30));
-                add(boardLaels[j][i]);
+                boardLabels[j][i].setFont(new Font("Ariel", Font.BOLD, 35));
+                boardLabels[j][i].setBorder(null);
+                boardLabels[j][i].setContentAreaFilled(false);
+                add(boardLabels[j][i]);
             }
         }
         setVisible(true);
     }
+
+    public boolean isValidMove(int[] start, int[] end, int player) {
+        if (flying[player-1] || placingPhase) {
+            return board[end[0]][end[1]]==EMPTY;
+        }
+        else {
+            int[] options = moves[start[1]];
+            options[0]+=start[1];
+            options[1]+=start[1];
+            if (start[0]==end[0] && (options[0]==end[1] || options[1]==end[1])) {// Possible moves on same ring
+                // If they're on the same ring, and the end state is one of the two possible moves on the same ring
+                return board[end[0]][end[1]]==EMPTY;
+            }
+            return (board[end[0]][end[1]]==EMPTY && options[2]==1 && start[1]==end[1] && Math.abs(start[0]-end[0])==1); // Possible move between rings
+            // If the end tile is EMPTY, and we can move between rings, and start and end are in the same position between rings, and the rings are only 1 apart
+        }
+    }
+
+    // public int evaluateBoard(
+
+    public int countPieces(int player) {
+        int pieces = 0;
+        for (int i=0; i<board.length; i++) {
+            for (int j=0; j<board[i].length; j++) {
+                if (board[i][j]==player) {
+                    pieces++;
+                }
+            }
+        }
+        return pieces;
+    }
+
+    // public int countMillis(int player) {
+    //     int Millis = 0;
+    //     for (int i=0; i<board.length; i++) {
+    //         if (board[i][0]==board[i][1] && board[i][1]==board[i][2])
+    //     }
+    // }
 
     public static void main(String[] args) {
         visual a = new visual();
@@ -152,7 +208,6 @@ public class visual extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+        System.out.println("Pushed");
     }
 }

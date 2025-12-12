@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
+
 public class visual extends JFrame implements ActionListener {
 
     int[][] board = new int[3][8]; /* ring, which spot
@@ -164,7 +165,13 @@ public class visual extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public boolean isValidMove(int[] start, int[] end, int player) {
+    public boolean isValidMove(int[] start, int[] end, int player) { // Checks if a possible move is valid or not
+        try {
+            boolean t = board[start[0]][start[1]]==board[end[0]][end[1]];
+        }
+        catch(Exception e) {
+            return false;
+        }
         if (flying[player-1] || placingPhase) {
             return board[end[0]][end[1]]==EMPTY;
         }
@@ -181,9 +188,34 @@ public class visual extends JFrame implements ActionListener {
         }
     }
 
-    // public int evaluateBoard(
+    public ArrayList<int[]> possibleMoves(int player) { // Returns list of all possible moves the chosen player may make
+        ArrayList<int[]> moves = new ArrayList<int[]>(); // [start ring, start position, end ring, end position]
+        for (int i=0; i<board.length; i++) {
+            for (int j=0; j<board[i].length; j++) {
+                if (board[i][j]!=player) {
+                    continue;
+                }
+                int[] start = new int[] {i,j};
+                for (int k=-3; k<3; k++) {
+                    int[] end = new int[] {start[0], start[1]+k};
+                    if (isValidMove(start, end, player)) {
+                        moves.add(end);
+                    }
+                }
+                int[] end = new int[] {start[0]-1, start[1]};
+                if (isValidMove(start, end, player)) {
+                    moves.add(end);
+                }
+                end = new int[] {start[0]+1, start[1]};
+                if (isValidMove(start, end, player)) {
+                    moves.add(end);
+                }
+            }
+        }
+        return moves;
+    }
 
-    public int countPieces(int player) {
+    public int countPieces(int player) { // Counts the amount of pieces remaining for a player
         int pieces = 0;
         for (int i=0; i<board.length; i++) {
             for (int j=0; j<board[i].length; j++) {
@@ -195,12 +227,33 @@ public class visual extends JFrame implements ActionListener {
         return pieces;
     }
 
-    // public int countMillis(int player) {
-    //     int Millis = 0;
-    //     for (int i=0; i<board.length; i++) {
-    //         if (board[i][0]==board[i][1] && board[i][1]==board[i][2])
-    //     }
-    // }
+    public int countMillis(int player) { // Counts the amount of Millis the player currently has on the board
+        int Millis = 0;
+        for (int i=0; i<board.length; i++) {
+            for (int j=0; j<2; j++) {
+                if (board[i][5*j]==board[i][5*j+1] && board[i][5*j+1]==board[i][5*j+2] && board[i][5*j+0]==player) { // Top and Bottom rows
+                    Millis++;
+                }
+                if (board[i][2*j]==board[i][j+3] && board[i][j+3]==board[i][2*j+5] && board[i][2*j]==player){ // left and right columns
+                    Millis++;
+                }
+                if (board[0][5*j+1]==board[1][1] && board[1][5*j+1]==board[2][1] && board[0][5*j+1]==player) { // Top and Bottom between rings
+                    Millis++;
+                }
+                if (board[0][3+j]==board[1][3+j] && board[1][3+j]==board[2][3+j] && board[0][3+j]==player) { // Left and Right between rings
+                    Millis++;
+                }
+            }
+        }
+        return Millis;
+    }
+
+    public int evaluateBoard(int player) {
+        int total = (countPieces(player)-countPieces((player%2)+1)) * 10; // Count how many pieces you have left compared to your opponent. Weight of 10
+        total += (countMillis(player)-countMillis((player%2)+1))*12; // Count how many Millis you have on the board compared to your opponent. Weight of 12
+
+        return -1;
+    }
 
     public static void main(String[] args) {
         visual a = new visual();

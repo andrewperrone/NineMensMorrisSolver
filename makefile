@@ -1,4 +1,4 @@
 default:
 	java driver.java $(ARGS)
 open:
-	code -r *.java
+	code -r *.java *.md

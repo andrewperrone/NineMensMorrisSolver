@@ -1,5 +1,7 @@
 **Requirements**
 
+Add images to this folder so we can eventually add it to the drive
+
 # Title Page (separate nicely formatted page)
 
 - Copy paste from previous [reports](https://docs.google.com/document/d/14q9LlTMxdtRLbnDi2xUTHpx3G7e0w8Clx0i63cAe3_k/edit?usp=sharing)
@@ -8,21 +10,21 @@
 
 - We've never done this before, intruiging: Best for last, TOC is easiest when everything exists
 
-# Abstract
+# Abstract (Kevin)
 
 - Writing
 
-# Introduction
+# Introduction (Kevin)
 
 - Discuss the project, introduce the problem you are trying to solve, how you solve it, and sumarize your conclusions.
 - Keywords
 
-# Background
+# Background (Kevin)
 
 - Discuss the background of the problem you’re trying to solve.
 - Discuss the background of your solution.
 
-# Problem Formulation
+# Problem Formulation (Israel)
 
 - Go over the complete formulation of your problem. This can be broken into subsections:
   - task environment,
@@ -39,24 +41,18 @@
     - and space complexity.
 - Discuss the meaning of each.
 
-# Project Results
+# Project Results (Israel)
 
 - Describe the expected project results.
 
-# Contributions
+# Contributions (Israel)
 
 - This section should be used to list all individual contributions of every group member. It should be clear what everyone worked on.
 
-# Conclusion
+# Conclusion (Israel)
 
 - More writing
 
 ---
 
-The report needs to be written as a two-column IEEE standard paper.
-There will be a template on Canvas with LaTeX code with all sections. If
-you do not like using LaTeX, you can create the same style in Word or
-Google Docs. All images need to be labeled as figures and numbered. There
-should be absolutely no hand-drawn or handwritten elements of the paper.
-All figures should be clear and look professional. All citations need to be
-done using IEEE standard format.
+The report needs to be written as a two-column IEEE standard paper. There will be a template on Canvas with LaTeX code with all sections. If you do not like using LaTeX, you can create the same style in Word or Google Docs. All images need to be labeled as figures and numbered. There should be absolutely no hand-drawn or handwritten elements of the paper. All figures should be clear and look professional. All citations need to be done using IEEE standard format.

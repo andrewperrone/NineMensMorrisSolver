@@ -2,13 +2,19 @@
 
 Add images to this folder so we can eventually add it to the drive
 
+- References
+  - [Project 1](https://docs.google.com/document/d/18yjuf6_u7FrdDD5El6dm0gQjciRBoqCNS2pqEc45X1E/edit?usp=sharing)
+  - [Project 2](https://docs.google.com/document/d/14q9LlTMxdtRLbnDi2xUTHpx3G7e0w8Clx0i63cAe3_k/edit?usp=sharing)
+
+Video and code is extra credit, not too hard to work with either
+
 # Title Page (separate nicely formatted page)
 
 - Copy paste from previous [reports](https://docs.google.com/document/d/14q9LlTMxdtRLbnDi2xUTHpx3G7e0w8Clx0i63cAe3_k/edit?usp=sharing)
 
 # Table of contents
 
-- We've never done this before, intruiging: Best for last, TOC is easiest when everything exists
+- We've never done this before, intruiging: Best for last, TOC is easiest when everything already exists
 
 # Abstract (Kevin)
 
@@ -28,6 +34,8 @@ Add images to this folder so we can eventually add it to the drive
 
 - Go over the complete formulation of your problem. This can be broken into subsections:
   - task environment,
+    - The task environment is the specific context that an intelligent agent works within. It has defining characteristics that inform the type of agent that will be built to solve the problem. The properties of the Nine Men's Morris Solver task environment are listed below (Fig. **ADD A NUMBER HERE**).
+    - ![Image](./Task_Environment.png "Task Environment")
   - PEAS,
   - goal formulation,
   - problem formulation,

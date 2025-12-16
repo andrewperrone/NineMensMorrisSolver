@@ -37,13 +37,35 @@ Video and code is extra credit, not too hard to work with either
     - The task environment is the specific context that an intelligent agent works within. It has defining characteristics that inform the type of agent that will be built to solve the problem. The properties of the Nine Men's Morris Solver task environment are listed below (Fig. **ADD A NUMBER HERE**).
     - ![Image](./Task_Environment.png "Task Environment")
   - PEAS,
-  - goal formulation,
-  - problem formulation,
-  - etc.
+    - The PEAS structure works to further specify the environment the agent will be working in. PEAS stands for performance measure, environment, actuators, and sensors.
+    - The performance measure tells the agent how well it is performing. In Nine Men's Morris, the agent is trying to reach the best possible state against it's opponent. To achieve this, the agent is given a score for its actions:
+      - Each Man left alive - 10 points
+      - Each Milli made - 12 points
+      - Amount of possible moves - 1 point
+    - This is them compared to the opponent's points, which determines the board state's evaluation
+
+    - The environment of Nine Men's Morris is 3 3x3 boards, where the center tile is instead a smaller board, except for the last one which is empty
+    - ![Image](./Board.png "Board")
+    - We chose to represent this as a 2D array [i][j], where i represents which board, and j represent's which tile from 0-7. 
+    - As for the pieces, 'O','*', and '.' are our white, empty, and black spaces respectively
+
+    - Space {{0,1,2,3,4,5,6,7},{0,1,2,3,4,5,6,7},{0,1,2,3,4,5,6,7}}
+    - Tiles {O,*,.}
+
+    - As for the actuators, the agents have 2 different ones depending on the game phase.
+    - When each agent places their 9 men:
+      - Placing thir pieces on empty tiles
+      - Place tile {*, O}
+    - However, during the normal phase:
+      - Swap own man tile with valid empty tile
+      - Swap {left, right, up, down} or Swap {any} (if down to 3 men remaining)
+    
+    - The sensor for this agent is counting the amount of allied and enemy tiles, millis, and possible moves
   - Algorithm: include pseudo code of the algorithm you use. There are LaTeX libraries for formatting pseudo code.
 - Each project will be different depending on the methods that you use so be sure to include all relevant details for your particular methods.
 - In each subsection, include figures such as UML diagrams, flow charts, etc. to help your reader understand your solution method. You must discuss the problem solving performance
-    - completeness,
+    - completeness
+      - Completeness is how we determine the solvability of a problem. In our case, our algorithm is complete because it delivers the outcome we desire (the best possible move against another optimal player)
     - optimality,
     - time complexity,
     - and space complexity.

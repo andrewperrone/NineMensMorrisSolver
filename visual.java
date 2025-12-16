@@ -46,8 +46,7 @@ public class visual extends JFrame implements ActionListener {
     public static final int EMPTY = 0;
     public static final int WHITE = 1;
     public static final int BLACK = 2;
-    public static final String WHITEPIECE = "O";
-    public static final String BLACKPIECE = "*";
+    public static final String[] PIECES = new String[] {".", "O", "*"};
     public static boolean placingPhase = true;
     public static boolean normalPhase = false;
     public static boolean[] flying = new boolean[] {false, false}; // [White, Black]
@@ -255,8 +254,11 @@ public class visual extends JFrame implements ActionListener {
         return -1;
     }
 
-    public static void main(String[] args) {
-        visual a = new visual();
+    public void placePiece(int player, int ring, int index) {
+        int[] ButtonCoordinates = relationship[ring][index];
+        boardLabels[ButtonCoordinates[1]][ButtonCoordinates[0]].setText(PIECES[player]);
+        // System.out.println(ButtonCoordinates[1] + ":" + ButtonCoordinates[0] + " : " + PIECES[player]);
+        board[ring][index] = player;
     }
 
     @Override

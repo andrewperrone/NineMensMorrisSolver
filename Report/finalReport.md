@@ -65,11 +65,13 @@ Video and code is extra credit, not too hard to work with either
 - Each project will be different depending on the methods that you use so be sure to include all relevant details for your particular methods.
 - In each subsection, include figures such as UML diagrams, flow charts, etc. to help your reader understand your solution method. You must discuss the problem solving performance
     - completeness
-      - Completeness is how we determine the solvability of a problem. In our case, our algorithm is complete because it delivers the outcome we desire (the best possible move against another optimal player)
-    - optimality,
-    - time complexity,
-    - and space complexity.
-- Discuss the meaning of each.
+      - Completeness is how we determine the solvability of our solution. In our case, our algorithm is complete because it delivers the outcome we desire (the best possible move against another optimal player)
+    - optimality
+      - Optimality is how we determine the efficiency of our solution. In our case, our algorithm is mostly optimal, we use an alpha-beta algorithm to cut down on the amount of paths we have to search through
+    - time complexity
+      - Time complexity is how we represent the speed of our solution. In our case, our algorithm is O(p^d), where p is the amount of pieces left on the board, and d is how many moves deep our algorithm goes
+    - space complexity
+      - Space complexity is how we represent the space efficiency of our solution. In our case, or algorithm's spcae efficiency is O(pd), where p is the amount of pieces, and d is how many moves deep our algorithm goes
 
 # Project Results (Israel)
 

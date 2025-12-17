@@ -195,19 +195,13 @@ public class visual extends JFrame implements ActionListener {
                     continue;
                 }
                 int[] start = new int[] {i,j};
-                for (int k=-3; k<3; k++) {
-                    int[] end = new int[] {start[0], start[1]+k};
-                    if (isValidMove(start, end, player)) {
-                        moves.add(end);
+                for (int k=0; k<board.length; k++) {
+                    for (int l=0; l<board[k].length; l++) {
+                        int[] end = new int[] {k, l};
+                        if (isValidMove(start, end, player)) {
+                            moves.add(end);
+                        }
                     }
-                }
-                int[] end = new int[] {start[0]-1, start[1]};
-                if (isValidMove(start, end, player)) {
-                    moves.add(end);
-                }
-                end = new int[] {start[0]+1, start[1]};
-                if (isValidMove(start, end, player)) {
-                    moves.add(end);
                 }
             }
         }

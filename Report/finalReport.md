@@ -46,6 +46,7 @@ Video and code is extra credit, not too hard to work with either
 
     - The environment of Nine Men's Morris is 3 3x3 boards, where the center tile is instead a smaller board, except for the last one which is empty
     - ![Image](./Board.png "Board")
+    - (Fig.  **ADD A NUMBER HERE**) Above is the board as most people commonly know it as
     - We chose to represent this as a 2D array [i][j], where i represents which board, and j represent's which tile from 0-7. 
     - As for the pieces, 'O','*', and '.' are our white, empty, and black spaces respectively
 
@@ -75,15 +76,22 @@ Video and code is extra credit, not too hard to work with either
 
 # Project Results (Israel)
 
-- Describe the expected project results.
+- Our program uns correctly, and although it may not be the most efficient, the alpha-beta pruning definitely helps cut out a lot more paths to make it run smoother.
+- The biggest challenge facing us suprisingly wasn't implementing the alpha-beta pruning, but actually keeping track of removed pieces on each board, as well as just visualizing the 2D array we ended up creating
+- Once we overcame that issue, however, our algorithm ended up running smoothly and efficiently enough. And our static variables helped cut down on some calculations to help speed things along
 
 # Contributions (Israel)
 
 - This section should be used to list all individual contributions of every group member. It should be clear what everyone worked on.
+- Israel Velazquez
+  - Design, Code, Diagrams, Testing, and Report
 
 # Conclusion (Israel)
 
-- More writing
+- In the end, our project satisfied all the goals we set out to achieve. We also learned important mechanics about Nine Men's Morris, including the fact that the number of moves a player has available to them is also a very valuable resource. We also learned, that more often than not, Nine Men's Morris games will end in a draw if the AI is allowed to look far enough ahead, almost like a chess game. We were very satisfied with what we were able to accomplish and what we learned, especially the fact that all games played perfectly end in a never ending loop.
+- We definitely would like to improve our code structure, and our use of magic numbers. We also plan on allowing a human vs AI mode in the future so we can play against our own AI agents. Possibly allowing the player to choose how deep an AI agent can see, to make sure the game isn't *too* hard to win.
+
+# References
 
 ---
 

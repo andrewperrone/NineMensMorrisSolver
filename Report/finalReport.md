@@ -65,20 +65,20 @@ Video and code is extra credit, not too hard to work with either
   - Algorithm: include pseudo code of the algorithm you use. There are LaTeX libraries for formatting pseudo code.
 - Each project will be different depending on the methods that you use so be sure to include all relevant details for your particular methods.
 - In each subsection, include figures such as UML diagrams, flow charts, etc. to help your reader understand your solution method. You must discuss the problem solving performance
-    - completeness
-      - Completeness is how we determine the solvability of our solution. In our case, our algorithm is complete because it delivers the outcome we desire (the best possible move against another optimal player)
-    - optimality
-      - Optimality is how we determine the efficiency of our solution. In our case, our algorithm is mostly optimal, we use an alpha-beta algorithm to cut down on the amount of paths we have to search through
-    - time complexity
-      - Time complexity is how we represent the speed of our solution. In our case, our algorithm is O(p^d), where p is the amount of pieces left on the board, and d is how many moves deep our algorithm goes
-    - space complexity
-      - Space complexity is how we represent the space efficiency of our solution. In our case, or algorithm's spcae efficiency is O(pd), where p is the amount of pieces, and d is how many moves deep our algorithm goes
+  - completeness
+    - Completeness is how we determine the solvability of our solution. In our case, our algorithm is complete because it delivers the outcome we desire (the best possible move against another optimal player)
+  - optimality
+    - Optimality is how we determine the efficiency of our solution. In our case, our algorithm is mostly optimal, we use an alpha-beta algorithm to cut down on the amount of paths we have to search through
+  - time complexity
+    - Time complexity is how we represent the speed of our solution. In our case, our algorithm is O(p^d), where p is the amount of pieces left on the board, and d is how many moves deep our algorithm goes
+  - space complexity
+    - Space complexity is how we represent the space efficiency of our solution. In our case, or algorithm's spcae efficiency is O(pd), where p is the amount of pieces, and d is how many moves deep our algorithm goes
 
 # Project Results (Israel)
 
-- Our program uns correctly, and although it may not be the most efficient, the alpha-beta pruning definitely helps cut out a lot more paths to make it run smoother.
-- The biggest challenge facing us suprisingly wasn't implementing the alpha-beta pruning, but actually keeping track of removed pieces on each board, as well as just visualizing the 2D array we ended up creating
-- Once we overcame that issue, however, our algorithm ended up running smoothly and efficiently enough. And our static variables helped cut down on some calculations to help speed things along
+- Our program runs correctly, and although it may not be the most efficient, the alpha-beta pruning definitely helps cut out a lot more paths to make it run smoother. The AI agents tend to lean towards infinite matches as their depth increases, possible signalling that, similar to chess, a perfect game ends in a draw.
+- The biggest challenge facing us suprisingly wasn't implementing the alpha-beta pruning, but actually keeping track of removed pieces on each board, as well as just visualizing the 2D array we ended up creating. Nine Men's Morris' board isn't a traditional 3 by 3 board, and not all the connections are intact, and you can see us struggle with a large block of code in order to make it easier for us to use.
+- Once we overcame that issue, however, our algorithm ended up running smoothly and efficiently enough. And we included some static variables, which eneded up helping cut down on some mid-run calculations to help speed things along.
 
 # Contributions (Israel)
 
